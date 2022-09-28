@@ -6,14 +6,13 @@ namespace Ui {
 class Cell;
 }
 
-class LivingCell;
 
 class Cell : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit Cell(QWidget *parent = nullptr);
+    explicit Cell(QWidget *parent = nullptr, QPoint inCoord = {0, 0});
     ~Cell();
 
 private slots:
@@ -22,6 +21,7 @@ private slots:
 private:
     Ui::Cell *ui;
 
-    LivingCell* cell;
+    bool isLiving;
+    const QPoint coord;
 };
 
