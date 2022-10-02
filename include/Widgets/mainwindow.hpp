@@ -8,7 +8,8 @@ class MainWindow;
 }
 
 class QTableView;
-class GameBoard;
+class GameBoardModel;
+class CellDelegate;
 
 class MainWindow : public QMainWindow
 {
@@ -19,21 +20,21 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_actionPlay_triggered();
-
-    void on_actionStop_triggered();
-
-    void on_actionRestart_triggered();
-
-    void on_actionSave_Pattern_triggered();
-
-    void on_actionClear_field_triggered();
+    void onActionPlayTriggered();
+    void onActionStopTriggered();
+    void onActionRestartTriggered();
+    void onActionSavePatternTriggered();
+    void onActionClearFieldTriggered();
+    void onActionQuitTriggered();
 
 private:
+    void setupActions();
+
     Ui::MainWindow *ui;
 
-    GameBoard* board;
+    GameBoardModel* board;
     QTableView* view;
+    CellDelegate* delegate;
 };
 
 #endif // MAINWINDOW_H

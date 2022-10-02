@@ -1,5 +1,6 @@
 #include "Widgets/mainwindow.hpp"
 #include "Widgets/gameboard.hpp"
+#include "celldelegate.hpp"
 
 #include <QTableView>
 #include <QHeaderView>
@@ -15,22 +16,29 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setWindowTitle(tr("Conway's Game of Life"));
 
-    board = new GameBoard;
+    board = new GameBoardModel;
 
     view->setModel(board);
 
     auto vertHeader = new QHeaderView(Qt::Orientation::Vertical);
-    vertHeader->setDefaultSectionSize(1);
+    vertHeader->setMinimumSectionSize(15);
+    vertHeader->setMaximumSectionSize(15);
+    vertHeader->setDefaultSectionSize(15);
     vertHeader->hide();
 
     auto horHeader = new QHeaderView(Qt::Orientation::Horizontal);
-    horHeader->setDefaultSectionSize(1);
+    horHeader->setMinimumSectionSize(15);
+    horHeader->setMaximumSectionSize(15);
+    horHeader->setDefaultSectionSize(15);
     horHeader->hide();
 
     view->setVerticalHeader(vertHeader);
     view->setHorizontalHeader(horHeader);
 
+    delegate = new CellDelegate(this);
+    view->setItemDelegate(delegate);
 
+    setupActions();
 }
 
 MainWindow::~MainWindow()
@@ -38,32 +46,47 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_actionPlay_triggered()
+void MainWindow::setupActions()
+{
+    connect(ui->actionPlay, &QAction::triggered, this, &MainWindow::onActionPlayTriggered);
+    connect(ui->actionStop, &QAction::triggered, this, &MainWindow::onActionStopTriggered);
+    connect(ui->actionRestart, &QAction::triggered, this, &MainWindow::onActionRestartTriggered);
+    connect(ui->actionSave_Pattern, &QAction::triggered, this, &MainWindow::onActionSavePatternTriggered);
+    connect(ui->actionClear_field, &QAction::triggered, this, &MainWindow::onActionClearFieldTriggered);
+    connect(ui->actionQuit, &QAction::triggered, this, &MainWindow::onActionQuitTriggered);
+}
+
+void MainWindow::onActionPlayTriggered()
 {
 
 }
 
 
-void MainWindow::on_actionStop_triggered()
+void MainWindow::onActionStopTriggered()
 {
 
 }
 
 
-void MainWindow::on_actionRestart_triggered()
+void MainWindow::onActionRestartTriggered()
 {
 
 }
 
 
-void MainWindow::on_actionSave_Pattern_triggered()
+void MainWindow::onActionSavePatternTriggered()
 {
 
 }
 
 
-void MainWindow::on_actionClear_field_triggered()
+void MainWindow::onActionClearFieldTriggered()
 {
 
 }
 
+
+void MainWindow::onActionQuitTriggered()
+{
+    QApplication::exit();
+}
