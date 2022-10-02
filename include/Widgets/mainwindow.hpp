@@ -7,6 +7,9 @@ namespace Ui {
 class MainWindow;
 }
 
+class QTableView;
+class GameBoard;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -18,11 +21,19 @@ public:
 private slots:
     void on_actionPlay_triggered();
 
+    void on_actionStop_triggered();
+
+    void on_actionRestart_triggered();
+
+    void on_actionSave_Pattern_triggered();
+
+    void on_actionClear_field_triggered();
+
 private:
     Ui::MainWindow *ui;
 
-    bool** gameField;
-    size_t fieldSize;
+    GameBoard* board;
+    QTableView* view;
 };
 
 #endif // MAINWINDOW_H

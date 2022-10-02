@@ -13,9 +13,7 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout_2"/>
-  </widget>
+  <widget class="QWidget" name="centralwidget"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -64,7 +62,8 @@
   </widget>
   <action name="actionNew_Game">
    <property name="icon">
-    <iconset theme="applications-games"/>
+    <iconset theme="applications-games">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>New Game</string>
@@ -75,7 +74,8 @@
   </action>
   <action name="actionQuit">
    <property name="icon">
-    <iconset theme="application-exit"/>
+    <iconset theme="application-exit">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Quit</string>
