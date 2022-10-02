@@ -31,8 +31,8 @@ public:
     void clear();
 
 private:
-    static constexpr int width = 32;
-    static constexpr int height = 32;
+    static constexpr int width = 64;
+    static constexpr int height = 64;
     static constexpr int size = width * height;
 
     using PlaygroundType = std::array<bool, size>;
